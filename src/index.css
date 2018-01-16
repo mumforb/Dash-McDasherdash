@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Roboto+Mono:300,400,500,700');
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto Mono', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* bjm */
+
+.flex-container {  /* We first create a flex layout context */
+  display: flex;
+
+  /* Then we define the flow direction
+     and if we allow the items to wrap
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+}
+
+.panel {
+  background: black;
+  color: white;
+
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+  flex: 1 0 auto;
+  padding: 0.75%;
+  margin: 0.75%;
+  box-shadow: 2px 2px 1px 1px rgba(200, 200, 200, 0.5);
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.panel-width-1 {
+  flex-basis: 97%;
+}
+
+.panel-width-2 {
+  flex-basis: 47%;
+}
+
+.panel-width-3 {
+  flex-basis: 30%;
+}
+
+.panel-width-4 {
+  flex-basis: 22%;
+}
+
+.panel-height-1 {
+  height: 800px;
+}
+
+.panel-height-2 {
+  height: 400px;
+}
+
+.panel-height-3 {
+  height: 200px;
+}
+
+.panel-height-4 {
+  height: 100px;
+}
+
+#weather-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.weather-day {
+  font-size: 14px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 0 18%;
+  margin: 0.5%;
+  border-right: 1px solid white;
+}
+
+.weather-day:last-child {
+  border-right: none;
+}
+
+.weather-icon {
+  font-size: 32px;
+}
+
+@media (max-width: 720px) {
+
+  .panel-width-2 {
+    flex-basis: 97%;
+  }
+
+  .panel-width-3 {
+    flex-basis: 47%;
+  }
+
+  .panel-width-4 {
+    flex-basis: 47%;
+  }
+}
