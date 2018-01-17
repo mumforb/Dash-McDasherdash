@@ -13,11 +13,10 @@ class Forecast extends Component {
   }
 
   render() {
-    console.log("tpww", this.props.weather.weather);
     if (this.props.weather.weather !== null){
       return (
         <Panel {...this.props}>
-          <h4>{this.props.title} for {this.props.weather.weather.city.name}</h4>
+          <h4>{this.props.weather.weather.city.name} {this.props.title}</h4>
           <div id="weather-row">
             <Days {...this.props} />
           </div>

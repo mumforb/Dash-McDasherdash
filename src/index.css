@@ -103,6 +103,38 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 32px;
 }
 
+.climate-box {
+  font-size: 14px;
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 0 18%;
+  margin: 0.5%;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.climate-block {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.climate-icon {
+  font-size: 32px;
+  padding: 0 5px;
+}
+
+.climate-temps {
+  font-size: 12px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.climate-individual-temp {
+  justify-content: space-between;
+  display: flex;
+}
+
 @media (max-width: 720px) {
 
   .panel-width-2 {

@@ -14,20 +14,24 @@ export const Days = (props) => {
       )
     })
   };
-
   return x;
 }
 
 
 export const Day = (e) => {
-  console.log("e", e);
   const className = `wi wi-${IconMap[e.weather[0].id.toString()].icon}`;
-  const min = _.split(kelvinToFahrenheit(e.temp.min), '.');
-  const max = _.split(kelvinToFahrenheit(e.temp.max), '.');
+  let min = _.split(kelvinToFahrenheit(e.temp.min), '.');
+  let max = _.split(kelvinToFahrenheit(e.temp.max), '.');
+  if (min[2] > 50) {
+    min[0] = min + 1;
+  };
+  if (max[2] > 50) {
+    max[0] = max + 1;
+  };
   return (
     <div className="weather-day">
       <div className="weather-icon"><i className={className}></i></div>
-      <div className="weather-temprange">{min[0]}&#8457;  {max[0]}&#8457;</div>
+      <div className="weather-temprange">{max[0]}&#8457;  {min[0]}&#8457;</div>
       <div className="weather-main">{e.weather[0].main}</div>
     </div>
   )

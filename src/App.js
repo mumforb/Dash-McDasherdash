@@ -7,6 +7,8 @@ import Panel from './components/panel';
 
 import Badge from './components/panel_types/badge';
 import Forecast from './components/panel_types/forecast';
+import Camera from './components/panel_types/camera';
+import IndoorClimate from './components/panel_types/indoor_climate';
 
 
 class App extends Component {
@@ -25,11 +27,11 @@ class App extends Component {
           width={2}
           height={4}
           title="5-Day Forecast"
-          cityCode={dashboard_config.city_code}
+          cityCode={dashboard_config.open_weather_city_code}
           openWeatherMapAPIKey={dashboard_config.open_weather_map_api_key}
         />
 
-        <Panel
+        <Camera
           color="837a75"
           width={3}
           height={2}
@@ -37,12 +39,11 @@ class App extends Component {
           content="here's a line of content"
         />
 
-        <Panel
+        <IndoorClimate
           color="e9b872"
-          width={3}
-          height={2}
-          title="Calendar"
-          content="here's a line of content"
+          width={4}
+          height={4}
+          title="Indoor Climate"
         />
 
         <Panel
