@@ -8,6 +8,7 @@ class Badge extends Component {
       <Panel {...this.props}>
         <h1>{this.props.title}</h1>
         <h4>{moment().format('dddd')}, {moment().format('MMMM Do YYYY')}</h4>
+        <h2>{moment().format('h:mm A')}</h2>
       </Panel>
     )
   }

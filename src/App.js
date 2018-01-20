@@ -7,11 +7,23 @@ import Panel from './components/panel';
 
 import Badge from './components/panel_types/badge';
 import Forecast from './components/panel_types/forecast';
+import CurrentWeather from './components/panel_types/current_weather';
 import Camera from './components/panel_types/camera';
 import IndoorClimate from './components/panel_types/indoor_climate';
+import Locks from './components/panel_types/locks';
+import Message from './components/panel_types/message';
+import Lights from './components/panel_types/lights';
+import MaslowState from './components/panel_types/maslow_state';
 
 
 class App extends Component {
+
+  componentWillMount(){
+    setTimeout(function () {
+      window.location.reload();
+    }, 60000);
+  };
+
   render() {
     return (
       <div className="flex-container">
@@ -31,11 +43,29 @@ class App extends Component {
           openWeatherMapAPIKey={dashboard_config.open_weather_map_api_key}
         />
 
-        <Camera
+
+        <CurrentWeather
+          color="70a0af"
+          width={3}
+          height={2}
+          title="Weather"
+          cityCode={dashboard_config.open_weather_city_code}
+          openWeatherMapAPIKey={dashboard_config.open_weather_map_api_key}
+        />
+
+        <Message
           color="837a75"
           width={3}
           height={2}
-          title="Sports"
+          title="Messages"
+          content="here's a line of content"
+        />
+
+        <Lights
+          color="718f94"
+          width={3}
+          height={2}
+          title="Lights"
           content="here's a line of content"
         />
 
@@ -46,27 +76,18 @@ class App extends Component {
           title="Indoor Climate"
         />
 
-        <Panel
+        <Locks
           color="98dfaf"
           width={4}
           height={4}
-          title="Sports"
-          content="here's a line of content"
+          title="Locks"
         />
 
-        <Panel
-          color="718f94"
-          width={4}
-          height={4}
-          title="Calendar"
-          content="here's a line of content"
-        />
-
-        <Panel
+        <MaslowState
           color="70a0af"
           width={4}
           height={4}
-          title="Sports"
+          title="Maslow State"
           content="here's a line of content"
         />
 
