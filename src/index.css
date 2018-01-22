@@ -67,19 +67,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .panel-height-1 {
-  height: 800px;
+  height: 960px;
 }
 
 .panel-height-2 {
-  height: 400px;
+  height: 480px;
 }
 
 .panel-height-3 {
-  height: 200px;
+  height: 240px;
 }
 
 .panel-height-4 {
-  height: 100px;
+  height: 120px;
+}
+
+.badge h1, .badge h2, .badge h4 {
+  padding: 0;
+}
+
+.badge h2 {
+  font-size: 70px;
+  margin-top: -12px;
 }
 
 #weather-row {
@@ -206,8 +215,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .maslow-icon i {
-  font-size: 80px;
-};
+  font-size: 50px;
+}
+
+.maslow-text {
+  text-align: center;
+  font-size: 20px;
+}
 
 @media (max-width: 720px) {
 

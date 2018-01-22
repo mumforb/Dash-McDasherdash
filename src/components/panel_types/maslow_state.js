@@ -7,6 +7,10 @@ import { connect } from 'react-redux';
 
 import { dashboard_config } from '../../dashboard_config';
 
+const currMin = moment(new Date()).minute();
+const currHour = moment(new Date()).hour();
+const currDay = moment(new Date()).day();
+
 
 const stateFinder = (m) => {
   switch(m){
@@ -34,9 +38,6 @@ const stateFinder = (m) => {
 }
 
 const maslowFinder = () => {
-  const currMin = moment(new Date()).minute();
-  const currHour = moment(new Date()).hour();
-  const currDay = moment(new Date()).day();
   if (currDay < 6 ) {
     if (currHour <= 5) {
       if (currMin <= 45) {
@@ -66,7 +67,11 @@ const maslowFinder = () => {
       return "sleep";
     }
   } else {
-    return "hygge";
+    if (currHour > 7 && currHour <= 10) {
+      return "coffee";
+    } else {
+      return "hygge";
+    }
   }
 }
 
@@ -79,6 +84,7 @@ class MaslowState extends Component {
       <Panel {...this.props}>
         <h4>{this.props.title}</h4>
         <div className="maslow-icon"><i className="material-icons">{stateFinder(maslowFinder())}</i></div>
+        <div className="maslow-text">{maslowFinder()}</div>
       </Panel>
     )
   }

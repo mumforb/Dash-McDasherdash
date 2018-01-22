@@ -25,6 +25,7 @@ export const Day = (e) => {
   let max = _.split(kelvinToFahrenheit(e.temp.max), '.');
   return (
     <div className="weather-day">
+      <div className="weather-day-of-week">{moment(e.dt * 1000).format('dddd')}</div>
       <div className="weather-icon"><i className={className}></i></div>
       <div className="weather-temprange">{max[0]}&#8457;  {min[0]}&#8457;</div>
       <div className="weather-main">{e.weather[0].main}</div>
@@ -67,7 +68,7 @@ export const WindDirection = (w) => {
     return 'wi wi-wind towards-313-deg';
   } else {
     return 'wi wi-wind towards-336-deg';
-  }    
+  }
 }
 
 
@@ -79,6 +80,7 @@ export const Today = (props) => {
   let temp = _.split(kelvinToFahrenheit(currentWeather.main.temp), '.');
   const sunrise =  new Date(currentWeather.sys.sunrise * 1000);
   const sunset =  new Date(currentWeather.sys.sunset * 1000);
+  const wind = _.split(currentWeather.wind.deg, '.');
   return (
     <div className="current-weather-day">
       <div className="current-weather-topline">
@@ -118,7 +120,7 @@ export const Today = (props) => {
         <div className="current-weather-direction current-weather-bottom-element">
           <div>Wind Direction:</div>
           <div>&nbsp;</div>
-          <div>{currentWeather.wind.deg} <i className={WindDirection(currentWeather.wind.deg)}></i></div>
+          <div>{wind[0]} <i className={WindDirection(wind[0])}></i></div>
         </div>
       </div>
     </div>
