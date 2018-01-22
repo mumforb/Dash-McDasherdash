@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Table of Contents
 
-- [Configure a Pi in Kiosk Mode for Display](#configure a pi in kiosk mode for display)
+- [Configure a Pi in Kiosk Mode for Display](#configure-a-pi-in-kiosk-mode-for-display)
 
 
 ## Configure a Pi in Kiosk Mode for Display
