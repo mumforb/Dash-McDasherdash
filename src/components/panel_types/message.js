@@ -5,28 +5,34 @@ import { connect } from 'react-redux';
 import { dashboard_config } from '../../dashboard_config';
 
 import { getMessage } from '../../actions';
+import { MessageLoop } from '../helpers/message_functions';
 
-const messageDisplay = (m, i) => {
-  return (
-    <div className="message-single" key={i}>{m.content}</div>
-  )
-}
 
-const MessageLoop = (props) => {
-  let messageArray = [];
-  props.message.message.map((m, i) => {
-    messageArray.push (
-      messageDisplay(m, i)
-    )
-  });
-  return messageArray;
-}
 
 class Message extends Component {
+  constructor(props) {
+    super(props);
+
+    this._getMessage = this._getMessage.bind(this);
+    this._intervalId = this._intervalId.bind(this);
+  }
 
   componentWillMount() {
+    this._getMessage();
+  };
+
+  componentDidMount() {
+    this._intervalId();
+    this._getMessage();
+  };
+
+  _getMessage(){
     this.props.getMessage(dashboard_config.todoist_personal_api_token, dashboard_config.todoist_messaging_project_id);
-  }
+  };
+
+  _intervalId(){
+    setInterval(() => this._getMessage(), 30000);
+  };
 
   render() {
     if (this.props.message.message !== null){

@@ -50,11 +50,11 @@ export const getDownstairsThermostat = (h, p, c) => {
   });
 };
 
-export const getUpstairsThermostat = () => {
+export const getUpstairsThermostat = (h, p, c) => {
   return (dispatch => {
-    axios.get(`http://192.168.1.248:8123/api/states/climate.upstairs`, {
+    axios.get(`${h}/api/states/climate.${c}`, {
       headers: {
-        'x-ha-access': 'awesome'
+        'x-ha-access': p
       }
     })
     .then((response) => {

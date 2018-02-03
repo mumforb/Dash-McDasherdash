@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 
 import { dashboard_config } from './dashboard_config';
 
@@ -8,7 +8,7 @@ import Panel from './components/panel';
 import Badge from './components/panel_types/badge';
 import Forecast from './components/panel_types/forecast';
 import CurrentWeather from './components/panel_types/current_weather';
-import Camera from './components/panel_types/camera';
+// import Camera from './components/panel_types/camera';
 import IndoorClimate from './components/panel_types/indoor_climate';
 import Locks from './components/panel_types/locks';
 import Message from './components/panel_types/message';
@@ -18,11 +18,6 @@ import MaslowState from './components/panel_types/maslow_state';
 
 class App extends Component {
 
-  componentWillMount(){
-    setTimeout(function () {
-      window.location.reload();
-    }, 60000);
-  };
 
   render() {
     return (

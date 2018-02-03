@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import Panel from '../panel';
 import { connect } from 'react-redux';
@@ -7,33 +6,35 @@ import { connect } from 'react-redux';
 import { dashboard_config } from '../../dashboard_config';
 
 import { getLocks } from '../../actions';
+import { LocksBox } from '../helpers/lock_functions';
 
-const lockModes = (m) => {
-  switch(m){
-    case "locked":
-      return `lock`
-    case "unlocked":
-      return `lock_open`
-    default:
-      return "";
-  }
-}
 
-const LocksBox = (c) => {
-  return (
-    <div className="climate-box">
-      <div>{c.data.attributes.friendly_name}</div>
-      <div className="climate-icon"><i className="material-icons" aria-hidden="true">{lockModes(c.data.state)}</i></div>
-    </div>
-  )
-}
 
 class Locks extends Component {
+  constructor(props) {
+    super(props);
+
+    this._getLocks = this._getLocks.bind(this);
+    this._intervalId = this._intervalId.bind(this);
+  }
 
   componentWillMount() {
-    // lock.front_door
+    this._getLocks();
+  };
+
+  componentDidMount() {
+    this._intervalId();
+    this._getLocks();
+  };
+
+  _getLocks(){
     this.props.getLocks(dashboard_config.hassio_address, dashboard_config.hassio_http_password, dashboard_config.locks[0].hassio_lock_entity_id);
-  }
+  };
+
+  _intervalId(){
+    setInterval(() => this._getLocks(), 30000);
+  };
+
 
   render() {
     const l = this.props.Locks.data;

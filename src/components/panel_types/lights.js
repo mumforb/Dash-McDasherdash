@@ -7,17 +7,7 @@ import { connect } from 'react-redux';
 import { dashboard_config } from '../../dashboard_config';
 
 import { getLights } from '../../actions';
-
-const modes = (m) => {
-  switch(m){
-    case "off":
-      return `brightness_low`
-    case "on":
-      return `brightness_high`
-    default:
-      return "";
-  }
-}
+import { lightModes } from '../helpers/light_functions';
 
 
 
@@ -25,15 +15,21 @@ class Lights extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      initialLightArray: [],
-      lightArray: []
-    }
-
+    this._getLights = this._getLights.bind(this);
+    this._intervalId = this._intervalId.bind(this);
     this._DisplayLights = this._DisplayLights.bind(this);
   }
 
   componentWillMount() {
+    this._getLights();
+  };
+
+  componentDidMount() {
+    this._intervalId();
+    this._getLights();
+  };
+
+  _getLights(){
     let lightsArray = [];
     dashboard_config.lights.map((l, i) => {
       axios.get(`${dashboard_config.hassio_address}/api/states/light.${l.entity_id}`, {
@@ -48,10 +44,13 @@ class Lights extends Component {
         })
       });
     });
-    console.log("lightsArray", lightsArray);
     this.props.getLights(lightsArray);
     this._DisplayLights(lightsArray);
-  }
+  };
+
+  _intervalId(){
+    setInterval(() => this._getLights(), 30000);
+  };
 
   _DisplayLights(l){
     let lightDisplayArray = [];
@@ -60,7 +59,7 @@ class Lights extends Component {
         <div className="light-box" key={i}>
           <div>{e.attributes.friendly_name}</div>
           <div>{e.attributes.brightness}</div>
-          <div className="light-icon"><i className="material-icons" aria-hidden="true">{modes(e.state)}</i></div>
+          <div className="light-icon"><i className="material-icons" aria-hidden="true">{lightModes(e.state)}</i></div>
         </div>
       );
     });

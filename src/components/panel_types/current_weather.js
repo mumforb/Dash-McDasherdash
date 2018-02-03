@@ -6,12 +6,31 @@ import { getCurrentWeather } from '../../actions';
 
 import { Today } from '../helpers/forecast_functions';
 
-class CurrentWeather extends Component {
 
-  componentWillMount() {
-    this.props.getCurrentWeather(this.props.cityCode, this.props.openWeatherMapAPIKey);
+class CurrentWeather extends Component {
+  constructor(props) {
+    super(props);
+
+    this._getWeather = this._getWeather.bind(this);
+    this._intervalId = this._intervalId.bind(this);
   }
 
+  componentWillMount() {
+    this._getWeather();
+  };
+
+  componentDidMount() {
+    this._intervalId();
+    this._getWeather();
+  };
+
+  _getWeather(){
+    this.props.getCurrentWeather(this.props.cityCode, this.props.openWeatherMapAPIKey);
+  };
+
+  _intervalId(){
+    setInterval(() => this._getWeather(), 30000);
+  };
 
   render() {
     if (this.props.CurrentWeather !== null){
