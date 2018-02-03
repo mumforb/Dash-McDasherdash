@@ -34,8 +34,6 @@ export const Day = (e) => {
 };
 
 export const WindDirection = (w) => {
-  console.log("w", w);
-  console.log(206);
   if (w < 23) {
     return 'wi wi-wind towards-0-deg';
   } else if (w < 45) {
@@ -73,7 +71,6 @@ export const WindDirection = (w) => {
 
 
 export const Today = (props) => {
-  console.log("props", props);
   const currentWeather = props.CurrentWeather;
 
   const className = `wi wi-${IconMap[currentWeather.weather[0].id.toString()].icon}`;
@@ -126,27 +123,3 @@ export const Today = (props) => {
     </div>
   )
 }
-
-
-
-//  city name
-//  city.name
-
-//  weather loop
-
-//  list[x].main.humidity
-//  list[x].main.temp
-//  list[x].main.pressure
-//  list[x].main.max
-//  list[x].main.min
-//  list[x].weather.description
-
-// this is how you select the icon class
-//  list[x].weather.id
-
-// these may not exist
-//  list[x].rain.3h
-//  list[x].snow.3h
-
-//  list[x].wind.speed
-//  list[x].wind.deg

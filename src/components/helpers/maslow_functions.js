@@ -1,5 +1,4 @@
-import React from 'react';
-import axios from 'axios';
+// import React from 'react';
 import moment from 'moment';
 
 const currMin = moment(new Date()).minute();
@@ -11,18 +10,14 @@ export const stateFinder = (m) => {
   switch(m){
     case "hygge":
       return `weekend`
-    case "unlocked":
-      return `insert_emoticon`
     case "work":
       return `monetization_on`
-    case "unlocked":
+    case "dinner":
       return `local_dining`
     case "coffee":
       return `local_cafe`
     case "sleep":
       return `local_hotel`
-    case "unlocked":
-      return `cake`
     case "bus":
       return `directions_bus`;
     case "homework":

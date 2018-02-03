@@ -8,6 +8,7 @@ export const GET_DOWNSTAIRS_THERMOSTAT = 'GET_DOWNSTAIRS_THERMOSTAT';
 export const GET_LOCKS = 'GET_LOCKS';
 export const GET_MESSAGE = 'GET_MESSAGE';
 export const GET_LIGHTS = 'GET_LIGHTS';
+export const GET_SCORES = 'GET_SCORES';
 
 export const getWeather = (c, o) => {
   return (dispatch => {
@@ -49,6 +50,7 @@ export const getDownstairsThermostat = (h, p, c) => {
     });
   });
 };
+
 
 export const getUpstairsThermostat = (h, p, c) => {
   return (dispatch => {
@@ -103,3 +105,20 @@ export const getLights = (a) => {
     payload: a
   }
 };
+
+
+export const getScores = (d) => {
+  return (dispatch => {
+    axios.request(`https://cors-anywhere.herokuapp.com/data.nba.net/prod/v1/20180202/scoreboard.json`, {
+      headers: {
+        'Cache-Control' : 'no-cache'
+      }
+    }).then((response) => {
+      console.log("response", response);
+      dispatch({
+        type: GET_SCORES,
+        payload: response
+      })
+    })
+  })
+}

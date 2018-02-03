@@ -14,6 +14,7 @@ import Locks from './components/panel_types/locks';
 import Message from './components/panel_types/message';
 import Lights from './components/panel_types/lights';
 import MaslowState from './components/panel_types/maslow_state';
+import Scores from './components/panel_types/scores';
 
 
 class App extends Component {
@@ -86,11 +87,11 @@ class App extends Component {
           content="here's a line of content"
         />
 
-        <Panel
+        <Scores
           color="6494aa"
-          width={4}
+          width={3}
           height={4}
-          title="Calendar"
+          title="Last Night's Scores"
           content="here's a line of content"
         />
       </div>
