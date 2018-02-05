@@ -85,7 +85,7 @@ export const Today = (props) => {
           <i className={className}></i>
           <div className="current-weather-desc">{currentWeather.weather[0].main}</div>
         </div>
-        <div className="current-weather-temp">{temp[0]}&#8457;</div>
+        <div className="current-weather-temp">{temp[0]}<i className="wi wi-fahrenheit"></i></div>
       </div>
       <div>&nbsp;</div>
       <div className="current-weather-bottomline">

@@ -9,6 +9,7 @@ export const GET_LOCKS = 'GET_LOCKS';
 export const GET_MESSAGE = 'GET_MESSAGE';
 export const GET_LIGHTS = 'GET_LIGHTS';
 export const GET_SCORES = 'GET_SCORES';
+export const GET_SCHEDULE = 'GET_SCHEDULE';
 
 export const getWeather = (c, o) => {
   return (dispatch => {
@@ -107,16 +108,30 @@ export const getLights = (a) => {
 };
 
 
-export const getScores = (d) => {
+export const getScores = (y) => {
   return (dispatch => {
-    axios.request(`https://cors-anywhere.herokuapp.com/data.nba.net/prod/v1/20180202/scoreboard.json`, {
+    axios.request(`https://cors-anywhere.herokuapp.com/data.nba.net/prod/v1/${y}/scoreboard.json`, {
       headers: {
         'Cache-Control' : 'no-cache'
       }
     }).then((response) => {
-      console.log("response", response);
       dispatch({
         type: GET_SCORES,
+        payload: response
+      })
+    })
+  })
+}
+
+export const getSchedule = (t) => {
+  return (dispatch => {
+    axios.request(`https://cors-anywhere.herokuapp.com/data.nba.net/prod/v1/${t}/scoreboard.json`, {
+      headers: {
+        'Cache-Control' : 'no-cache'
+      }
+    }).then((response) => {
+      dispatch({
+        type: GET_SCHEDULE,
         payload: response
       })
     })

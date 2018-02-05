@@ -54,7 +54,6 @@ class App extends Component {
           width={3}
           height={2}
           title="Messages"
-          content="here's a line of content"
         />
 
         <Lights
@@ -62,7 +61,6 @@ class App extends Component {
           width={3}
           height={2}
           title="Lights"
-          content="here's a line of content"
         />
 
         <IndoorClimate
@@ -84,15 +82,13 @@ class App extends Component {
           width={4}
           height={4}
           title="Maslow State"
-          content="here's a line of content"
         />
 
         <Scores
           color="6494aa"
           width={3}
-          height={4}
-          title="Last Night's Scores"
-          content="here's a line of content"
+          height={3}
+          title="Tonight's Games"
         />
       </div>
     );

@@ -1,12 +1,13 @@
-import { GET_SCORES } from '../actions/index';
+import { GET_SCORES, GET_SCHEDULE } from '../actions/index';
 
-const INITIAL_STATE = { scores: null };
+const INITIAL_STATE = { scores: null, schedule: null };
 
 export default function(state = INITIAL_STATE, action){
-  console.log("action", action);
   switch(action.type){
     case GET_SCORES:
       return { ...state, scores: action.payload}
+    case GET_SCHEDULE:
+      return { ...state, schedule: action.payload}
     default:
       return state;
   }

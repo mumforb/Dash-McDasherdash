@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Panel from '../panel';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
+
+import Panel from '../panel';
 import { dashboard_config } from '../../dashboard_config';
 
-import { getScores } from '../../actions';
+import { getScores, getSchedule } from '../../actions';
 
 
 const ScoreDisplay = (s) => {
@@ -12,16 +14,32 @@ const ScoreDisplay = (s) => {
   s.map((g, i) => {
     a.push(
       <span key={i} className="score">
-        {g.hTeam.triCode} vs {g.vTeam.triCode}
+        {g.vTeam.triCode} <span className="record">({g.vTeam.win}-{g.vTeam.loss})</span> vs {g.hTeam.triCode} <span className="record">({g.hTeam.win}-{g.hTeam.loss})</span>
         <br />
-        {g.hTeam.score} &nbsp;&nbsp; {g.vTeam.score}
+        {g.vTeam.score} &nbsp;&nbsp; {g.hTeam.score}
+        <br />
+        {g.nugget.text}
         <hr />
       </span>
     )
   });
   return a;
-}
+};
 
+const ScheduleDisplay = (c) => {
+  let b = [];
+  c.map((g, i) => {
+    b.push(
+      <span key={i} className="score">
+        {g.vTeam.triCode} <span className="record">({g.vTeam.win}-{g.vTeam.loss})</span> @ {g.hTeam.triCode} <span className="record">({g.hTeam.win}-{g.hTeam.loss})</span>
+        <br />
+        {g.arena.name}, {g.arena.city}
+        <hr />
+      </span>
+    )
+  });
+  return b;
+};
 
 class Scores extends Component {
   constructor(props) {
@@ -41,7 +59,15 @@ class Scores extends Component {
   };
 
   _getScores(){
-    this.props.getScores("date");
+    const todayTimeStamp = new Date; // Unix timestamp in milliseconds
+    const oneDayTimeStamp = 1000 * 60 * 60 * 24; // Milliseconds in a day
+    const diff = todayTimeStamp - oneDayTimeStamp;
+    const yesterdayDate = new Date(diff);
+
+    const y = moment(yesterdayDate).format('YYYYMMDD');
+    const t = moment().format('YYYYMMDD');
+    this.props.getScores(y);
+    this.props.getSchedule(t);
   };
 
   _intervalId(){
@@ -51,15 +77,22 @@ class Scores extends Component {
 
 
   render() {
-    if (this.props.scores !== null){
-      console.log("sciores", this.props.scores.data);
+    if (this.props.scores !== null && this.props.schedule !== null){
       return (
-        <Panel {...this.props}>
-          <h4>{this.props.title}</h4>
-          <div className="score-holder">
-            {ScoreDisplay(this.props.scores.data.games)}
-          </div>
-        </Panel>
+        <div>
+          <Panel {...this.props}>
+            <h4>{this.props.title}</h4>
+            <div className="score-holder">
+              {ScheduleDisplay(this.props.schedule.data.games)}
+            </div>
+          </Panel>
+          <Panel {...this.props}>
+            <h4>Last Night's Games</h4>
+            <div className="score-holder">
+              {ScoreDisplay(this.props.scores.data.games)}
+            </div>
+          </Panel>
+        </div>
       )
     } else {
       return (
@@ -73,8 +106,9 @@ class Scores extends Component {
 
 function mapStateToProps(state){
   return {
-    scores: state.Scores.scores
+    scores: state.Scores.scores,
+    schedule: state.Scores.schedule
   }
 };
 
-export default connect(mapStateToProps, { getScores })(Scores);
+export default connect(mapStateToProps, { getScores, getSchedule })(Scores);

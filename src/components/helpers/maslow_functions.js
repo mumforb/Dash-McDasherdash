@@ -28,6 +28,7 @@ export const stateFinder = (m) => {
 }
 
 export const maslowFinder = () => {
+//  console.log("time", currDay + " " + currHour + " " + currMin);
   if (currDay !== 0 && currDay !== 6 ) {
     if (currHour <= 5) {
       if (currMin <= 45) {
@@ -37,12 +38,8 @@ export const maslowFinder = () => {
       }
     } else if (currHour > 6 && currHour <= 8) {
       return "coffee";
-    } else if (currHour > 9 && currHour <= 2) {
-      if (currMin < 30) {
-        return "work";
-      } else {
-        return "bus";
-      }
+    } else if (currHour > 9 && currHour <= 14) {
+      return "work";
     } else if (currHour >= 15 && currHour < 18) {
       if (currMin < 15) {
         return "bus";

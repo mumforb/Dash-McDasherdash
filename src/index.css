@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .panel-height-2 {
-  height: 480px;
+  height: 400px;
 }
 
 .panel-height-3 {
@@ -192,12 +192,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .light-box {
+  font-size: 15px;
   display: flex;
   flex-flow: row nowrap;
   border-bottom: 1px solid white;
   padding: 5px;
   margin: 5px;
   justify-content: space-between;
+}
+
+.light-box .material-icons {
+  font-size: 15px;
 }
 
 .message-single {
@@ -229,8 +234,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .score {
-  width: 10%;
-  margin-left: 2%;
+  width: 18%;
+  margin-right: 2%;
+}
+
+.record {
+  font-size: 12px;
 }
 
 @media (max-width: 720px) {

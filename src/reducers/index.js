@@ -15,5 +15,5 @@ export default combineReducers({
   Locks: LocksReducer,
   Message: MessageReducer,
   Lights: LightsReducer,
-  Scores: ScoresReducer,
+  Scores: ScoresReducer
 });
