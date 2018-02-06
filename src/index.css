@@ -228,18 +228,39 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 20px;
 }
 
-.score-holder {
+.schedule-holder, .score-holder {
   flex-flow: row wrap;
   display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.scheduledGame {
+  width: 18%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+.scoreContainer {
+  width: 23%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: 14px;
 }
 
 .score {
-  width: 18%;
-  margin-right: 2%;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .record {
   font-size: 12px;
+}
+
+.vTeam.vBold, .hTeam.hBold {
+  font-weight: 800;
 }
 
 @media (max-width: 720px) {

@@ -24,14 +24,14 @@ class App extends Component {
     return (
       <div className="flex-container">
         <Badge
-          color="c97b84"
+          color="70A0AF"
           width={4}
           height={4}
           title={dashboard_config.site_name}
         />
 
         <Forecast
-          color="5fb49c"
+          color="104F55"
           width={2}
           height={4}
           title="5-Day Forecast"
@@ -39,9 +39,8 @@ class App extends Component {
           openWeatherMapAPIKey={dashboard_config.open_weather_map_api_key}
         />
 
-
         <CurrentWeather
-          color="70a0af"
+          color="264653"
           width={3}
           height={2}
           title="Weather"
@@ -50,43 +49,43 @@ class App extends Component {
         />
 
         <Message
-          color="837a75"
+          color="32746D"
           width={3}
           height={2}
           title="Messages"
         />
 
         <Lights
-          color="718f94"
+          color="173753"
           width={3}
           height={2}
           title="Lights"
         />
 
         <IndoorClimate
-          color="e9b872"
+          color="70A0AF"
           width={4}
           height={4}
           title="Indoor Climate"
         />
 
         <Locks
-          color="98dfaf"
+          color="104F55"
           width={4}
           height={4}
           title="Locks"
         />
 
         <MaslowState
-          color="70a0af"
+          color="32746D"
           width={4}
           height={4}
           title="Maslow State"
         />
 
         <Scores
-          color="6494aa"
-          width={3}
+          color="264653"
+          width={1}
           height={3}
           title="Tonight's Games"
         />
