@@ -100,7 +100,7 @@ class Scores extends Component {
   };
 
   _intervalId(){
-    setInterval(() => this._getScores(), 30000);
+    setInterval(() => this._getScores(), 15000);
   };
 
 

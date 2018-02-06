@@ -7,6 +7,30 @@ import { stateFinder, maslowFinder } from '../helpers/maslow_functions';
 
 
 class MaslowState extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      maslowState: maslowFinder()
+    };
+
+    this._getMaslow = this._getMaslow.bind(this);
+  }
+
+  componentDidMount() {
+    this._intervalId();
+    this._getMaslow();
+  };
+
+  _getMaslow(){
+    this.setState({
+      maslowState: maslowFinder()
+    });
+  };
+
+  _intervalId(){
+    setInterval(() => this._getMaslow(), 60000);
+  };
 
   render() {
     return (
