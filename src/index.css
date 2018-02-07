@@ -2,11 +2,9 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons-wind.css');
+@import './sass/normalize.css';
 
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -14,6 +12,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Rubik', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
+  margin: 0;
+}
+
+#site-title {
   margin: 0;
 }
 
