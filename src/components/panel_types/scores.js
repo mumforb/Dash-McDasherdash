@@ -109,14 +109,12 @@ class Scores extends Component {
     if (this.props.scores !== null && this.props.schedule !== null){
       if (this.state.showScores === false){
         return (
-          <div>
-            <Panel {...this.props}>
-              <h4>{this.props.title}</h4>
-              <div className="schedule-holder">
-                {ScheduleDisplay(this.props.schedule.data.games)}
-              </div>
-            </Panel>
-          </div>
+          <Panel {...this.props}>
+            <h4>{this.props.title}</h4>
+            <div className="schedule-holder">
+              {ScheduleDisplay(this.props.schedule.data.games)}
+            </div>
+          </Panel>
         )
       } else {
         return (

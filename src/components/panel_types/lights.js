@@ -58,7 +58,7 @@ class Lights extends Component {
       lightDisplayArray.push (
         <div className="light-box" key={i}>
           <div>{e.attributes.friendly_name}</div>
-          <div>{e.attributes.brightness}</div>
+          <div className="light-brightness">{e.attributes.brightness}</div>
           <div className="light-icon"><i className="material-icons" aria-hidden="true">{lightModes(e.state)}</i></div>
         </div>
       );
