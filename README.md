@@ -6,8 +6,50 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Table of Contents
 
+- [Demo](#demo)
+- [Components](#components)
+- [Setup Dash McDasherdash](#setup-dash-mcdasherdash)
+- [Setup Hassio](#setup-hassio)
 - [Configure a Pi in Kiosk Mode for Display](#configure-a-pi-in-kiosk-mode-for-display)
 - [Run A Very Simple Web Server on the Pi and Deploy](#run-a-very-simple-web-server-on-the-pi-and-deploy)
+
+## Demo
+
+![Preview](https://raw.githubusercontent.com/mumforb/Dash-McDasherdash/master/public/preview.jpg)
+
+## Components
+
+This dashboard is designed to ingest a few different APIs at this time: Todoist, Hass.io, NBA.net, and OpenWeatherMap. The Todoist API supplies the messages panel, information about your home from hassio, last night's scores and tonight's games from NBA.net, and local weather from OpenWeatherMap. Hassio will require some setup if you wish to use it, while Todoist and OpenWeatherMap require keys that are placed in a config file ([see below](#setup-dash-mcdasherdash)).
+
+## Setup Dash McDasherdash
+
+To get Dash McDasherdash up and running, clone this project. Then, make a copy of ./src/dashboard_config_sample.js and call it dashboard_config.js.
+
+```
+~$ mv ~/<PATH_TO_PROJECT/src/dashboard_config_sample.js ~/<PATH_TO_PROJECT/src/dashboard_config.js
+```
+Open up dashboard_config and fill in the blanks with your information.
+Then execute these two commands:
+```
+~$ npm install
+~$ npm start
+```
+This will start a development server on localhost:3000.
+
+## Setup Hassio
+
+If you want to consume data feeds from the Hassio API, you will need to allow CORS. Add/edit the http: section of your configuration.yaml:
+```
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  cors_allowed_origins:
+  - 127.0.0.1
+  - http://<YOUR_DEV_MACHINE_LOCAL_IP>:3000
+  - http://<YOUR_DISPLAY_MACHINE_LOCAL_IP>:5000
+  - https://<YOUR_EXTERNAL_URL>.duckdns.org:5000
+```  
+This section will look different depending on whether you wish the dashboard to be available outside your network, etc.
 
 ## Configure a Pi in Kiosk Mode for Display
 
