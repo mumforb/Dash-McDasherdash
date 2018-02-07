@@ -1,6 +1,6 @@
 ## Dash McDasherdash
 
-This project puts a ReactJS front-end on a smorgasbord of APIs, mostly from a local instance of Hass.io.
+This project puts a ReactJS front-end on a smorgasbord of APIs, mostly from a local instance of Hass.io. (Very, very much a work in progress, as of 02/2018.)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

@@ -17,6 +17,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 /* bjm */
 
 .flex-container {  /* We first create a flex layout context */
@@ -71,15 +75,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .panel-height-2 {
-  height: 400px;
+  height: 380px;
 }
 
 .panel-height-3 {
-  height: 220px;
+  height: 200px;
 }
 
 .panel-height-4 {
-  height: 120px;
+  height: 110px;
 }
 
 .badge h1, .badge h2, .badge h4 {
@@ -112,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .weather-icon {
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .current-weather-day {
