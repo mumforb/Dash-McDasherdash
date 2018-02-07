@@ -205,6 +205,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 15px;
 }
 
+.light-brightness {
+  width: 50px;
+}
+
+.light-icon {
+  width: 15px;
+}
+
 .message-single {
   font-size: 20px;
   padding: 15px 0;

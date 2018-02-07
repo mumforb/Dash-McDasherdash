@@ -8,8 +8,7 @@ import { IconMap } from './forecast_constants';
 export const Days = (props) => {
   let x = [];
   if (props.weather.weather.list !== undefined){
-    let w = props.weather.weather.list.splice(0, 5);
-    console.log("w", w);
+    let w = props.weather.weather.list.slice(0, 5);
     w.forEach((e, i) => {
       x.push (
         <Day {...e} key={i} />
@@ -28,7 +27,7 @@ export const Day = (e) => {
     <div className="weather-day">
       <div className="weather-day-of-week">{moment(e.dt * 1000).format('dddd')}</div>
       <div className="weather-icon"><i className={className}></i></div>
-      <div className="weather-temprange">{max[0]}&#8457;  {min[0]}&#8457;</div>
+      <div className="weather-temprange">{max[0]}<i className="wi wi-fahrenheit"></i>  {min[0]}<i className="wi wi-fahrenheit"></i></div>
       <div className="weather-main">{e.weather[0].main}</div>
     </div>
   )

@@ -14,6 +14,7 @@ class MaslowState extends Component {
       maslowState: maslowFinder()
     };
 
+    this._intervalId = this._intervalId.bind(this);
     this._getMaslow = this._getMaslow.bind(this);
   }
 
@@ -23,21 +24,22 @@ class MaslowState extends Component {
   };
 
   _getMaslow(){
+    const m = maslowFinder();
     this.setState({
-      maslowState: maslowFinder()
+      maslowState: m
     });
   };
 
   _intervalId(){
-    setInterval(() => this._getMaslow(), 60000);
+    setInterval(() => this._getMaslow(), 10000);
   };
 
   render() {
     return (
       <Panel {...this.props}>
         <h4>{this.props.title}</h4>
-        <div className="maslow-icon"><i className="material-icons">{stateFinder(maslowFinder())}</i></div>
-        <div className="maslow-text">{maslowFinder()}</div>
+        <div className="maslow-icon"><i className="material-icons">{stateFinder(this.state.maslowState)}</i></div>
+        <div className="maslow-text">{this.state.maslowState}</div>
       </Panel>
     )
   }

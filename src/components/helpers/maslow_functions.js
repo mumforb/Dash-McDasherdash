@@ -36,11 +36,11 @@ export const maslowFinder = () => {
       } else {
         return "coffee";
       }
-    } else if (currHour > 6 && currHour <= 8) {
+    } else if (currHour >= 6 && currHour <= 8) {
       return "coffee";
-    } else if (currHour > 9 && currHour <= 14) {
+    } else if (currHour >= 9 && currHour <= 14) {
       return "work";
-    } else if (currHour >= 15 && currHour < 18) {
+    } else if (currHour >= 15 && currHour <= 17) {
       if (currMin < 15) {
         return "bus";
       } else {
@@ -48,13 +48,15 @@ export const maslowFinder = () => {
       }
     } else if (currHour >= 18 && currHour <= 19) {
       return "dinner";
-    } else if (currHour > 19 && currHour <= 22){
+    } else if (currHour >= 20 && currHour <= 22){
       return "hygge";
     } else {
       return "sleep";
     }
   } else {
-    if (currHour > 7 && currHour <= 10) {
+    if (currHour >= 23 || currHour <= 7) {
+      return "sleep";
+    } else if (currHour >= 7 && currHour <= 10) {
       return "coffee";
     } else {
       return "hygge";
