@@ -15,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 
-![Preview](https://raw.githubusercontent.com/mumforb/Dash-McDasherdash/master/public/preview.jpg)
+![Preview](https://raw.githubusercontent.com/mumforb/Dash-McDasherdash/master/public/preview.png)
 
 ## Components
 
