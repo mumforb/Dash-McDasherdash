@@ -9,7 +9,8 @@ export const Days = (props) => {
   let x = [];
   if (props.weather.weather.list !== undefined){
     let w = props.weather.weather.list.splice(0, 5);
-    w.map((e, i) => {
+    console.log("w", w);
+    w.forEach((e, i) => {
       x.push (
         <Day {...e} key={i} />
       )

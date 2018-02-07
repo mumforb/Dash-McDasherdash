@@ -31,7 +31,7 @@ class Lights extends Component {
 
   _getLights(){
     let lightsArray = [];
-    dashboard_config.lights.map((l, i) => {
+    dashboard_config.lights.forEach((l, i) => {
       axios.get(`${dashboard_config.hassio_address}/api/states/light.${l.entity_id}`, {
         headers: {
           'x-ha-access': dashboard_config.hassio_http_password
@@ -54,7 +54,7 @@ class Lights extends Component {
 
   _DisplayLights(l){
     let lightDisplayArray = [];
-    l.map((e, i) => {
+    l.forEach((e, i) => {
       lightDisplayArray.push (
         <div className="light-box" key={i}>
           <div>{e.attributes.friendly_name}</div>

@@ -4,13 +4,13 @@ import moment from 'moment';
 
 
 import Panel from '../panel';
-import { dashboard_config } from '../../dashboard_config';
+// import { dashboard_config } from '../../dashboard_config';
 
 import { getScores, getSchedule } from '../../actions';
 
 
 const winningTeam = (x) => {
-  if (parseInt(x.vTeam.score) > parseInt(x.hTeam.score)) {
+  if (parseInt(x.vTeam.score, 10) > parseInt(x.hTeam.score, 10)) {
     return 'vBold';
   } else {
     return 'hBold';
@@ -19,7 +19,7 @@ const winningTeam = (x) => {
 
 const ScoreDisplay = (s) => {
   let a = [];
-  s.map((g, i) => {
+  s.forEach((g, i) => {
     a.push(
       <div key={i} className="scoreContainer">
         <div className="score">
@@ -32,7 +32,7 @@ const ScoreDisplay = (s) => {
             {g.hTeam.score}
           </div>
         </div>
-        {g.nugget.text}
+        <span className="record">{g.nugget.text}</span>
       </div>
     )
   });
@@ -44,12 +44,12 @@ const natBroadcast = (b) => {
     return "League Pass";
   } else {
     return b.national[0].longName;
-  };
+  }
 };
 
 const ScheduleDisplay = (c) => {
   let b = [];
-  c.map((g, i) => {
+  c.forEach((g, i) => {
     b.push(
       <span key={i} className="scheduledGame">
         {g.vTeam.triCode} <span className="record">({g.vTeam.win}-{g.vTeam.loss})</span> @ {g.hTeam.triCode} <span className="record">({g.hTeam.win}-{g.hTeam.loss})</span>
@@ -88,7 +88,7 @@ class Scores extends Component {
       showScores: !this.state.showScores
     });
 
-    const todayTimeStamp = new Date; // Unix timestamp in milliseconds
+    const todayTimeStamp = new Date(); // Unix timestamp in milliseconds
     const oneDayTimeStamp = 1000 * 60 * 60 * 24; // Milliseconds in a day
     const diff = todayTimeStamp - oneDayTimeStamp;
     const yesterdayDate = new Date(diff);
@@ -100,8 +100,10 @@ class Scores extends Component {
   };
 
   _intervalId(){
-    setInterval(() => this._getScores(), 15000);
+    setInterval(() => this._getScores(), 30000);
   };
+
+
 
 
 
@@ -109,14 +111,12 @@ class Scores extends Component {
     if (this.props.scores !== null && this.props.schedule !== null){
       if (this.state.showScores === false){
         return (
-          <div>
-            <Panel {...this.props}>
-              <h4>{this.props.title}</h4>
-              <div className="schedule-holder">
-                {ScheduleDisplay(this.props.schedule.data.games)}
-              </div>
-            </Panel>
-          </div>
+          <Panel {...this.props}>
+            <h4>{this.props.title}</h4>
+            <div className="schedule-holder">
+              {ScheduleDisplay(this.props.schedule.data.games)}
+            </div>
+          </Panel>
         )
       } else {
         return (

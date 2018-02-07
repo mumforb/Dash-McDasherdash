@@ -8,7 +8,7 @@ const messageDisplay = (m, i) => {
 
 export const MessageLoop = (props) => {
   let messageArray = [];
-  props.message.message.map((m, i) => {
+  props.message.message.forEach((m, i) => {
     messageArray.push (
       messageDisplay(m, i)
     )

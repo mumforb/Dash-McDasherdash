@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { dashboard_config } from './dashboard_config';
 
-import Panel from './components/panel';
+// import Panel from './components/panel';
 
 import Badge from './components/panel_types/badge';
 import Forecast from './components/panel_types/forecast';
