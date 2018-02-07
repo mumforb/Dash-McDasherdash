@@ -1,13 +1,45 @@
 ## Dash McDasherdash
 
-This project puts a ReactJS front-end on a smorgasbord of APIs, mostly from a local instance of Hass.io.
+This project puts a React front-end on a smorgasbord of APIs, mostly from a local instance of Hass.io.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Table of Contents
 
+- [Setup Dash McDasherdash](#setup-dash-mcdasherdash)
+- [Setup Hassio](#setup-hassio)
 - [Configure a Pi in Kiosk Mode for Display](#configure-a-pi-in-kiosk-mode-for-display)
 - [Run A Very Simple Web Server on the Pi and Deploy](#run-a-very-simple-web-server-on-the-pi-and-deploy)
+
+## Setup Dash McDasherdash
+
+To get Dash McDasherdash up and running, clone this project. Then, make a copy of ./src/dashboard_config_sample.js and call it dashboard_config.js.
+
+```
+~$ mv ~/<PATH_TO_PROJECT/src/dashboard_config_sample.js ~/<PATH_TO_PROJECT/src/dashboard_config.js
+```
+Open up dashboard_config and fill in the blanks with your information.
+Then execute these two commands:
+```
+~$ npm install
+~$ npm start
+```
+This will start a development server on localhost:3000.
+
+## Setup Hassio
+
+If you want to consume data feeds from the Hassio API, you will need to allow CORS. Add/edit the http: section of your configuration.yaml:
+```
+http:
+  # Secrets are defined in the file secrets.yaml
+  api_password: !secret http_password
+  cors_allowed_origins:
+  - 127.0.0.1
+  - http://<YOUR_DEV_MACHINE_LOCAL_IP>:3000
+  - http://<YOUR_DISPLAY_MACHINE_LOCAL_IP>:5000
+  - https://<YOUR_EXTERNAL_URL>.duckdns.org:5000
+```  
+This section will look different depending on whether you wish the dashboard to be available outside your network, etc.
 
 ## Configure a Pi in Kiosk Mode for Display
 
