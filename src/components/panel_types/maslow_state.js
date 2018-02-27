@@ -18,6 +18,10 @@ class MaslowState extends Component {
     this._getMaslow = this._getMaslow.bind(this);
   }
 
+  componentWillMount() {
+    this._getMaslow();
+  }
+
   componentDidMount() {
     this._intervalId();
     this._getMaslow();

@@ -15,6 +15,7 @@ import Message from './components/panel_types/message';
 import Lights from './components/panel_types/lights';
 import MaslowState from './components/panel_types/maslow_state';
 import Scores from './components/panel_types/scores';
+import Calendar from './components/panel_types/calendar';
 
 
 class App extends Component {
@@ -82,6 +83,14 @@ class App extends Component {
           height={4}
           title="Maslow State"
         />
+
+
+                <Calendar
+                  color="264653"
+                  width={1}
+                  height={3}
+                  title="Tonight's Calendar"
+                />
 
         <Scores
           color="264653"
